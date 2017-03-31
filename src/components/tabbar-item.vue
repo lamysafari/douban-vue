@@ -8,17 +8,34 @@
 
 <script>
     export default{
-        props: ['id'],
+        props: {
+            id:{
+                type:String
+            },
+            isRouter:{
+                type:Boolean,
+                default:false
+            }
+        },
         computed: {
             isActive(){
                 if(this.$parent.value===this.id){
                     return true;
                 }
             }
+        },
+        methods:{
+            goToRouter(){
+                this.$parent.$emit('input',this.id)
+                if(this.isRouter){
+                    this.$router.push(this.id)
+                }
+            }
         }
     }
 </script>
 <style lang="less">
+@import "../assets/less/var.less";
 .m-tabbar-item{
         flex: 1;
         text-align: center;
@@ -38,7 +55,7 @@
     }
     &.is-active{
         .m-tabbar-item-text{
-            color:#42bd56;
+            color:@tabbarActiveColor;
         }
     }
 }

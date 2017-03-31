@@ -1,5 +1,6 @@
 <template>
   <div>
+    <m-header></m-header>
     <m-tabbar v-model="select">
       <m-tabbar-item id='tab1'>
         <img src="../assets/images/ic_tab_home_normal.png" alt="" slot="icon-normal"> 
@@ -33,11 +34,13 @@
 <script>
   import mTabbar from '../components/tabbar'
   import mTabbarItem from '../components/tabbar-item'
+  import mHeader from'../components/header.vue'
   export default {
     name: 'index',
     components: {
       mTabbar,
-      mTabbarItem
+      mTabbarItem,
+      mHeader
     },
     data() {
       return {
